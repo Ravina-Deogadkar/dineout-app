@@ -17,8 +17,6 @@ import ShopIcon from '@material-ui/icons/Shop';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 
-import {Address} from  '../../server/data/address';
-
 const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1,
@@ -90,7 +88,7 @@ export default function Header() {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
   const [address, setAddress] = React.useState(null);
-console.log(Address);
+
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
