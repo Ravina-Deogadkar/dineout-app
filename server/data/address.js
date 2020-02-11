@@ -1,4 +1,4 @@
-export const Address = {
+const Address = {
     "address":[
         {
         'addressType':"Home",
@@ -16,3 +16,5 @@ export const Address = {
     }
 ]
 }
+
+module.exports = Address;
