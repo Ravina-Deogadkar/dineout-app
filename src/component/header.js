@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState, useEffect } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -16,6 +16,7 @@ import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import ShopIcon from '@material-ui/icons/Shop';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
+const axios = require('axios');
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -87,12 +88,12 @@ export default function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
-  const [address, setAddress] = React.useState(null);
+  const [address, setAddress] = React.useState({addressType:"Home",addressValue:"Street no. XYZ"});
 
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
+  const addressData= null;
   
   const handleProfileMenuOpen = event => {
     setAnchorEl(event.currentTarget);
@@ -102,7 +103,7 @@ export default function Header() {
     setMobileMoreAnchorEl(null);
   };
 
-  const handlechange = (event) => {
+  const handleChange = (event) => {
     setAddress({'Home':event.target.value});
   }
 
@@ -163,9 +164,25 @@ export default function Header() {
       </MenuItem>
     </Menu>
   );
+const fetchAddress = () => {
+  if(addressData==null){
+  axios.get('http://localhost:8030/adds')
+  .then(function (response) {
+    // handle success
+      addressData=response.data.address;
+    console.log(response);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+}
+}
 
+//console.log(addressData);
   return (
     <div className={classes.grow} >
+      
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -182,12 +199,32 @@ export default function Header() {
           <div className={classes.search}>
             
           <Typography className={classes.title} variant="h7" noWrap>
-           Home
+           {address.addressType}
           </Typography>
-            
           <Typography className={classes.title} variant="h7" noWrap>
-            Street no 23, IN.
+           {address.addressValue}
           </Typography>
+         
+          {/* <div className={classes.formControl}>
+      {/* <InputLabel id="demo-simple-select-autowidth-label">Address</InputLabel> }
+        <Select
+          labelId="demo-simple-select-autowidth-label"
+          id="demo-simple-select-autowidth"
+          value={address.addressValue}
+          onChange={handleChange}
+          autoWidth
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          {/* {addressData.forEach(element => {
+          (<MenuItem value={element.addressType}>{element.addressValue[0]}</MenuItem>)
+         // <MenuItem value={element.addressType}>{element.addressValue[1]}</MenuItem>
+          })}}
+
+        </Select>
+
+      </div> */}
 
           </div>
           <div className={classes.grow} />
