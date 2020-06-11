@@ -1,5 +1,8 @@
 import React,{Component} from 'react';
 import Layout from './layout';
+import Recommended from './recommended';
+import Typography from '@material-ui/core/Typography';
+
 //import { Component } from 'react';
 
 class Home extends Component{
@@ -8,16 +11,37 @@ class Home extends Component{
         // this.state={
 
         // };
+    this.classes=this.useStyles();
     }
-    recommended=(
+
+    useStyles(theme){
+
+        return(
+            {title: {
+            display: 'block'
+          }
+        })
+        
+    };
+    // recommended=(
+    //     <div>
+    //         <Typography variant="h6" noWrap>
+    //             Recommended
+    //         </Typography>
+    //         <div></div>
+    //     </div>
+    // );
+    offers=(
         <div>
-            <p>Recommended</p>
+             <Typography variant="h6" noWrap>
+            Offers
+          </Typography>
             <div></div>
         </div>
-    );
+    )
     render(){
         return(<Layout>
-            {this.recommended}
+            <Recommended></Recommended>
         </Layout>);
     }
 }
