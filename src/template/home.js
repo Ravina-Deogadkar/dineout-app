@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
-import Layout from './layout';
-import Recommended from './recommended';
-import Offer from './offer';
+import Layout from '../component/layout';
+import Recommended from '../component/recommended';
+import Offer from '../component/offer';
 import Typography from '@material-ui/core/Typography';
 
 //import { Component } from 'react';
