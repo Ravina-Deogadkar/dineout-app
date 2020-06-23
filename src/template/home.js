@@ -1,14 +1,13 @@
 import React,{Component} from 'react';
 import Layout from '../component/layout';
 import Recommended from '../component/recommended';
-import Offer from '../component/offer';
 import Typography from '@material-ui/core/Typography';
 
 //import { Component } from 'react';
 
 class Home extends Component{
-    Home(){
-       // super(props);
+    constructor(props){
+       super(props);
         // this.state={
 
         // };
@@ -23,15 +22,7 @@ class Home extends Component{
           }
         })
         
-    };
-    // recommended=(
-    //     <div>
-    //         <Typography variant="h6" noWrap>
-    //             Recommended
-    //         </Typography>
-    //         <div></div>
-    //     </div>
-    // );
+    };      
     offers=(
         <div>
             
@@ -40,7 +31,7 @@ class Home extends Component{
     render(){
         return(<Layout>
             <Recommended></Recommended>
-            <Offer></Offer>
+            
         </Layout>);
     }
 }
