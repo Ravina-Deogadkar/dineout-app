@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react';
+import React,{ useState, useEffect, Suspense, lazy } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -16,6 +16,11 @@ import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import ShopIcon from '@material-ui/icons/Shop';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+
+const Home = lazy(() => import('../template/home.js'));
+const Offer = lazy(() => import('../template/offer.js'));
+
 const axios = require('axios');
 
 const useStyles = makeStyles(theme => ({
@@ -57,6 +62,11 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  link: {
+    textDecoration: "none",
+    cursor: "default",
+    color: "white",
   },
   inputRoot: {
     color: 'inherit',
@@ -181,6 +191,7 @@ const fetchAddress = () => {
 
 //console.log(addressData);
   return (
+    <Router>
     <div className={classes.grow} >
       
       <AppBar position="static">
@@ -194,7 +205,9 @@ const fetchAddress = () => {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
+          <Link to="/" className={classes.link}>
             Restro
+            </Link>
           </Typography>
           <div className={classes.search}>
             
@@ -242,7 +255,9 @@ const fetchAddress = () => {
                 <LocalOfferIcon />
                 
               </Badge>
-             <p className={classes.menuLabel}>Offers</p> 
+             <p className={classes.menuLabel}>
+               <Link to="/offer" className={classes.link}>Offers</Link>
+             </p> 
             </IconButton>
             <IconButton
               edge="end"
@@ -278,6 +293,17 @@ const fetchAddress = () => {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-    </div>
+      <main className="maincontent" style={{ marginTop: "7%" }}>
+          <React.Fragment>
+            <Suspense fallback={<div></div>}>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/offer" component={Offer} />
+              </Switch>
+            </Suspense>
+          </React.Fragment>
+        </main>
+      </div>
+    </Router>
   );
 }
