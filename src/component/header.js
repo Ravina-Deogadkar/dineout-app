@@ -14,13 +14,11 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import ShopIcon from '@material-ui/icons/Shop';
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 const Home = lazy(() => import('../template/home.js'));
 const Offer = lazy(() => import('../template/offer.js'));
-
+const Search = lazy(() => import('./search.js'));
 const axios = require('axios');
 
 const useStyles = makeStyles(theme => ({
@@ -106,11 +104,11 @@ export default function Header() {
   const addressData= null;
   
   const handleProfileMenuOpen = event => {
-    setAnchorEl(event.currentTarget);
+   setAnchorEl(event.currentTarget);
   };
 
   const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
+   setMobileMoreAnchorEl(null);
   };
 
   const handleChange = (event) => {
@@ -118,12 +116,12 @@ export default function Header() {
   }
 
   const handleMenuClose = () => {
-    setAnchorEl(null);
+   setAnchorEl(null);
     handleMobileMenuClose();
   };
 
   const handleMobileMenuOpen = event => {
-    setMobileMoreAnchorEl(event.currentTarget);
+   setMobileMoreAnchorEl(event.currentTarget);
   };
 
   const menuId = 'primary-search-account-menu';
@@ -291,14 +289,15 @@ const fetchAddress = () => {
           </div>
         </Toolbar>
       </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
+      {/* {renderMobileMenu} */}
+      {/* {renderMenu} */}
       <main className="maincontent" style={{ marginTop: "7%" }}>
           <React.Fragment>
             <Suspense fallback={<div></div>}>
               <Switch>
-                <Route exact path="/" component={Home} />
+                <Route exact path="/home" component={Home} />
                 <Route path="/offer" component={Offer} />
+                <Route path="/search" component={Search} />
               </Switch>
             </Suspense>
           </React.Fragment>
