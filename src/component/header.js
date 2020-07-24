@@ -18,7 +18,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 const Home = lazy(() => import('../template/home.js'));
 const Offer = lazy(() => import('../template/offer.js'));
-const Search = lazy(() => import('./search.js'));
+const Search = lazy(() => import('../template/searchtemp.js'));
 const axios = require('axios');
 
 const useStyles = makeStyles(theme => ({
@@ -246,7 +246,9 @@ const fetchAddress = () => {
                 <SearchIcon />
                 
               </Badge>
-              <p className={classes.menuLabel}>Search</p>
+              <p className={classes.menuLabel}>
+              <Link to="/search" className={classes.link}>Search</Link>
+              </p>
             </IconButton>
             <IconButton aria-label="show 4 new offers" color="inherit">
               <Badge badgeContent={4} color="secondary">
@@ -295,7 +297,7 @@ const fetchAddress = () => {
           <React.Fragment>
             <Suspense fallback={<div></div>}>
               <Switch>
-                <Route exact path="/home" component={Home} />
+                <Route exact path="/" component={Home} />
                 <Route path="/offer" component={Offer} />
                 <Route path="/search" component={Search} />
               </Switch>
