@@ -1,16 +1,9 @@
 import React,{Component} from 'react';
-import Layout from '../component/layout';
 import Recommended from '../component/recommended';
-import Typography from '@material-ui/core/Typography';
-
-//import { Component } from 'react';
 
 class Home extends Component{
     constructor(props){
        super(props);
-        // this.state={
-
-        // };
     this.classes=this.useStyles();
     }
 
@@ -29,10 +22,10 @@ class Home extends Component{
         </div>
     )
     render(){
-        return(<Layout>
+        return(
             <Recommended></Recommended>
             
-        </Layout>);
+        );
     }
 }
 
