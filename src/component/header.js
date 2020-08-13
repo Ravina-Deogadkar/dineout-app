@@ -293,7 +293,7 @@ const fetchAddress = () => {
       </AppBar>
       {/* {renderMobileMenu} */}
       {/* {renderMenu} */}
-      <main className="maincontent" style={{ marginTop: "7%" }}>
+      <main className="maincontent" style={{ marginTop: "3%" }}>
           <React.Fragment>
             <Suspense fallback={<div></div>}>
               <Switch>
