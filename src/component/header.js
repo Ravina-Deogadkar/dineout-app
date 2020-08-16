@@ -19,6 +19,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 const Home = lazy(() => import('../template/home.js'));
 const Offer = lazy(() => import('../template/offer.js'));
 const Search = lazy(() => import('../template/searchtemp.js'));
+const Profile  = lazy(() => import('../template/profile.js'));
 const axios = require('axios');
 
 const useStyles = makeStyles(theme => ({
@@ -300,6 +301,7 @@ const fetchAddress = () => {
                 <Route exact path="/" component={Home} />
                 <Route path="/offer" component={Offer} />
                 <Route path="/search" component={Search} />
+                <Route path="/profile" component={Profile} />
               </Switch>
             </Suspense>
           </React.Fragment>
