@@ -4,6 +4,9 @@ import { makeStyles,withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import DineCard from './dinecard';
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import {getCadData} from "../store/action/cadDetail";
 
 const useStyles=(theme) => ({
     root: {
@@ -41,12 +44,10 @@ class recommended extends Component {
             expanded:false
         }
     }
-  //const [expanded, setExpanded] = React.useState(false);
-    
     handleExpandClick = () => {
-        let obj = this.state;
-        obj["expanded"] = !this.state.expanded;
-        this.setState(obj);
+      //  let obj = this.state;
+      //  obj["expanded"] = !this.state.expanded;
+     //   this.setState(obj);
     };
     render() {
         const classes = this.props.classes;
@@ -57,12 +58,39 @@ class recommended extends Component {
                     Recommended
                 </Typography>
                 <div>
-                    <DineCard></DineCard>
+                    <DineCard caddata={this.props.caddata}></DineCard>
                 </div>   
             </div>
         )
     }
 }
+recommended.propTypes={
+  caddata: PropTypes.array,
+  getCadData_action: PropTypes.func
+}
+recommended.defaultProps={
+  caddata:[
+    {
+      hotel:'A',
+      dishid:1,
+      dishname:'Burger',
+      image:'',
+      category:"Veg",
+      prize:90,
+    }
+  ]
+}
+const mapStateToProps =(state)=>{
+  return {caddata:state.caddata};
+}
 
-export default withStyles(useStyles)(recommended)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getCadData_action: (data) => dispatch(getCadData(data)),
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(useStyles)(recommended));
 
