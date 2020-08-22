@@ -14,7 +14,7 @@ const initialState = {
   function cadReducer(state = initialState, action) {
     // const newState = { ...state }
     switch (action.type) {
-      case "CREATE_ADS":
+      case "CREATE_CARD":
         // let newAds;
         if (action.value) {
           return {
@@ -48,7 +48,7 @@ const initialState = {
             ...state,
           };
         }
-      case "SIGN_OUT":
+      case "ADD_TO_CART":
         if (action.value) {
           return {
             ...state,
