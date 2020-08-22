@@ -1,14 +1,16 @@
 const initialState = {
-    caddata:[
-        {
-          hotel:'',
-          dishid:1,
-          dishname:'',
-          image:'',
-          category:"",
-          prize:90,
-        }
-      ]
+  dishdata:[
+    {
+      hotelid:'',
+      dishid:1,
+      dishname:'Aloo Burger',
+      image:'',
+      category:"Snacks",
+      type:"Veg",
+      rating:3,
+      price:50,
+    }
+  ]
   };
 
   function cadReducer(state = initialState, action) {
