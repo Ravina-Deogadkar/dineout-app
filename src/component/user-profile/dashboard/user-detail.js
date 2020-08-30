@@ -1,5 +1,18 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
+import { makeStyles,withStyles } from '@material-ui/core/styles';
+
+const useStyles=(theme) => ({
+    detail: {
+      
+    },
+    title: {
+        display: 'none',
+        [theme.breakpoints.up('sm')]: {
+          display: 'block',
+        },
+      },
+});
 class userDetail extends Component {
     constructor(props){
         super(props);
@@ -11,7 +24,7 @@ class userDetail extends Component {
                 <Typography className={classes.title} variant="h5" noWrap>
                 {userinfo.username}
                 </Typography>
-                <div>
+                <div className={classes.detail}>
                 <Typography className={classes.title} variant="h7" noWrap>
                 {userinfo.mobileno}
                 </Typography>
@@ -23,4 +36,4 @@ class userDetail extends Component {
         )
     }
 }
-export default userDetail
+export default withStyles(useStyles)(userDetail)
