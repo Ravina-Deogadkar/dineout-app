@@ -6,7 +6,7 @@ const swaggerUi = require('swagger-ui-express');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  if((data.address!=undefined) && (data.address.length>0))
+  if(data.address!=undefined)
     res.status(200).send(data);
   else
     res.status(400).send("No data found");
