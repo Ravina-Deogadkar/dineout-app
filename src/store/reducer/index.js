@@ -16,7 +16,7 @@ const initialState = {
   function cadReducer(state = initialState, action) {
     // const newState = { ...state }
     switch (action.type) {
-      case "CREATE_CARD":
+      case "CREATE_DISH":
         // let newAds;
         if (action.value) {
           return {
@@ -28,7 +28,7 @@ const initialState = {
             ...state,
           };
         }
-      case "SHOW_CARD":
+      case "SHOW_DISH":
         if (action.value) {
           return {
             ...state,
