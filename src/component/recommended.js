@@ -1,12 +1,16 @@
 
 import React, { Component } from 'react';
-import { makeStyles,withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import DineCard from './dinecard';
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import {getCadData} from "../store/action/cadDetail";
+import {getCadData} from "../store/action/dishDetail";
+import Grid from "@material-ui/core/Grid";
+import Axios from "axios";
+import {fetchDishData} from "../utils/fetchAPI";
+
 
 const useStyles=(theme) => ({
     root: {
@@ -41,47 +45,83 @@ class recommended extends Component {
     constructor(props){
         super(props);
         this.state={
-            expanded:false
+            expanded:false,
+            dishdata:[],
         }
     }
     handleExpandClick = () => {
       //  let obj = this.state;
       //  obj["expanded"] = !this.state.expanded;
-     //   this.setState(obj);
+     //   mthis.setState(obj);
     };
+    fetchDishData=()=>async()=>{
+      const serverURL="http://localhost:8030";
+      const url =  serverURL+"/dish";
+
+      let data = await Axios.get(url);
+      const adsDetails = [];
+      console.log(data.data.dishdata);
+      if (data.data.dishdata != undefined) {
+          data.data.dishdata.map((value, index) => {
+              if (index < 6) {
+                  adsDetails[index] = value;
+                  //adsDetails[index].image = serverURL + value.image;
+              }
+          });
+          let statedata=this.state;
+      statedata.dishdata=this.props.dishdata;
+      this.setState(statedata);
+      }
+    }
+    componentDidMount(){
+      this.fetchDishData();
+
+      this.props.getCadData_action(this.state.dishdata);
+      
+    }
     render() {
-        const classes = this.props.classes;
-        console.log(this.props);
+        const {classes,dishdata} = this.props;
+        console.log("this.props");
+        console.log(this.state.dishdata);
         return (
             <div>
                 <Typography variant="h6" noWrap className={classes.ttl} >
                     Recommended
                 </Typography>
-                <div>
-                    <DineCard caddata={this.props.caddata}></DineCard>
+                <div className={classes.root}>
+                    
+                    <Grid container style={{ margin: "auto" }} spacing={2}>
+              {this.state.dishdata.map((value, index) => (
+                <Grid item xs={3} sm={3} lg={4} key={index}>
+                  <DineCard dishdata={value}></DineCard>
+                </Grid>
+              ))}
+            </Grid>
                 </div>   
             </div>
         )
     }
 }
 recommended.propTypes={
-  caddata: PropTypes.array,
+  dishdata: PropTypes.array,
   getCadData_action: PropTypes.func
 }
 recommended.defaultProps={
-  caddata:[
+  dishdata:[
     {
-      hotel:'A',
+      hotelid:'H1',
       dishid:1,
-      dishname:'Burger',
+      dishname:'Aloo Burger',
       image:'',
-      category:"Veg",
-      prize:90,
+      category:"Snacks",
+      type:"Veg",
+      rating:3,
+      price:50,
     }
   ]
 }
 const mapStateToProps =(state)=>{
-  return {caddata:state.caddata};
+  return {dishdata:state.dishdata};
 }
 
 const mapDispatchToProps = (dispatch) => {
