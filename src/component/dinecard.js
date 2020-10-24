@@ -75,20 +75,20 @@ class dinecard extends Component {
             
                 <Card className={classes.root}>
       <CardHeader
-        title={caddata.dishname}
-        subheader={caddata.type}
+        title={caddata?.dishname}
+        subheader={caddata?.type}
       />
       <CardMedia
         className={classes.media}
-        image={caddata.image}
+        image={caddata?.image}
         title="Paella dish"
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          {caddata.price}
+          {caddata?.price}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
-          {caddata.category}
+          {caddata?.category}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
