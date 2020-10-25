@@ -1,6 +1,3 @@
-
-import {fetchDishData} from "../../utils/fetchAPI";
-
 export const getCad = (data) => {
     return {
       type: "SHOW_DISH",
