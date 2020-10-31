@@ -13,10 +13,6 @@ import {fetchDishData} from "../utils/fetchAPI";
 
 
 const useStyles=(theme) => ({
-    root: {
-      maxWidth: 345,
-      
-    },
     media: {
       height: 0,
       paddingTop: '56.25%', // 16:9
@@ -54,7 +50,7 @@ class recommended extends Component {
       //  obj["expanded"] = !this.state.expanded;
      //   mthis.setState(obj);
     };
-    fetchDishData=()=>async()=>{
+    fetchDishData=async()=>{
       const serverURL="http://localhost:8030";
       const url =  serverURL+"/dish";
 
@@ -69,7 +65,7 @@ class recommended extends Component {
               }
           });
           let statedata=this.state;
-      statedata.dishdata=this.props.dishdata;
+      statedata.dishdata=adsDetails;
       this.setState(statedata);
       }
     }
@@ -82,7 +78,7 @@ class recommended extends Component {
     render() {
         const {classes,dishdata} = this.props;
         console.log("this.props");
-        console.log(this.state.dishdata);
+        console.log('dishdata',this.state.dishdata);
         return (
             <div>
                 <Typography variant="h6" noWrap className={classes.ttl} >
@@ -90,7 +86,7 @@ class recommended extends Component {
                 </Typography>
                 <div className={classes.root}>
                     
-                    <Grid container style={{ margin: "auto" }} spacing={2}>
+                    <Grid container style={{ margin: "5%",maxWidth:'90%' }} spacing={5}>
               {this.state.dishdata.map((value, index) => (
                 <Grid item xs={3} sm={3} lg={4} key={index}>
                   <DineCard dishdata={value}></DineCard>
