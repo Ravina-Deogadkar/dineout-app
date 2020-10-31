@@ -27,4 +27,4 @@ const offer={
         }
     ]
 };
-export default offer;
+module.exports = offer;
