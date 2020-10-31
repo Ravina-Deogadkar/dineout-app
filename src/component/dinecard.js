@@ -15,7 +15,7 @@ import PropTypes from "prop-types";
 
 const useStyles=(theme) => ({
     root: {
-      maxWidth: 345,
+      maxWidth: 380,
       
     },
     media: {
