@@ -34,3 +34,12 @@ export const fetchHotelData = async () => {
     }
     return adsDetails;
 };
+
+export const apiDetails={
+    hotels:{
+        get: fetchHotelData(),
+    },
+    dishes:{
+        get: fetchDishData()
+    }
+}

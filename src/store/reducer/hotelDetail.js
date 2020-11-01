@@ -1,5 +1,4 @@
-const initialState = {
-    hoteldata:[
+const initialState = [
 		{
 			hotelid:'H3',
 			hotelname:'CSweets',
@@ -12,26 +11,23 @@ const initialState = {
 			rating:4.5,
 			avgprice:250,
 		}
-    ]
-};
+    ];
 
-    function hotelReducer(state = initialState, action) {
+
+    function hoteldata(state = initialState, action) {
         // const newState = { ...state }
         switch (action.type) {
             case "SHOW_HOTEL":
                 if (action.value) {
-                  return {
-                    ...state,
-                    ...action.value,
-                  };
+                  return action.value;
                 } else {
-                  return {
+                  return [
                     ...state,
-                  };
+                  ];
                 }
             default:
                 return state;
         }
     }
     
-    export default hotelReducer;
+export default hoteldata;

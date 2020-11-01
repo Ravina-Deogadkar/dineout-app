@@ -1,3 +1,5 @@
+import { apiDetails } from '../../utils/fetchAPI';
+
 export const getCad = (data) => {
     return {
       type: "SHOW_DISH",
@@ -19,9 +21,9 @@ export const getCad = (data) => {
   };
   // action creator
 
-  export const getCadData = (data) => {
+  export const getCadData = () => {
     return async (dispatch) => {
-      //let data=await fetchDishData();
+      let data = await apiDetails.dishes.get;
       dispatch(getCad(data));
     };
   };
