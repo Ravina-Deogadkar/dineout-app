@@ -1,4 +1,4 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import dishReducer from './dishDetail';
-import hotelReducer from './hotelDetail';
-export const reducer=combineReducers({dishReducer,hotelReducer});
+import dishdata from './dishDetail';
+import hoteldata from './hotelDetail';
+export const reducer = combineReducers({ dishdata, hoteldata});
