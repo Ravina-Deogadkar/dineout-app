@@ -21,9 +21,7 @@ const initialState = [
                 if (action.value) {
                   return action.value;
                 } else {
-                  return [
-                    ...state,
-                  ];
+                  return state;
                 }
             default:
                 return state;
