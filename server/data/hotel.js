@@ -5,7 +5,7 @@ const hotel={
             hotelname:'A Burger',
             image:'',
             category:["Snacks"],
-            type:"Veg",
+            type:["Veg"],
             address:"v",
             state:'mj',
             country:'ji',

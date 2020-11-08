@@ -11,7 +11,6 @@ export const getHotel = (data) => {
 export const getHotelData = () => {
     return async (dispatch) => {
       let data = await apiDetails.hotels.get;
-      console.log('data',data);
       dispatch(getHotel(data));
     };
   };
