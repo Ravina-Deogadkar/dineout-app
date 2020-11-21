@@ -13,12 +13,7 @@ export const getCad = (data) => {
       value: data,
     };
   };
-  export const addCart = (data) => {
-    return {
-      type: "ADD_TO_CART",
-      value: data,
-    };
-  };
+  
   // action creator
 
   export const getCadData = () => {
@@ -33,9 +28,4 @@ export const getCad = (data) => {
       dispatch(createCad(data));
     };
   };
-  export const addToCart = (data) => {
-    return async (dispatch) => {
-      
-      dispatch(addCart(data));
-    };
-  };
+  

@@ -18,37 +18,13 @@ function dishdata(state = initialState, action) {
           // let newAds;
           if (action.value) {
             return action.value;
-          } else {
+          } 
             return state;
-          }
         case "SHOW_DISH":
           if (action.value) {
             return action.value;
-          } else {
+          } 
             return state;
-          }
-        case "SIGN_IN":
-          if (action.value) {
-            return [
-              ...state,
-              ...action.value,
-            ];
-          } else {
-            return [
-              ...state,
-            ];
-          }
-        case "ADD_TO_CART":
-          if (action.value) {
-            return [
-              ...state,
-              ...action.value,
-            ];
-          } else {
-            return [
-              ...state,
-            ];
-          }
         default:
           break;
       }
