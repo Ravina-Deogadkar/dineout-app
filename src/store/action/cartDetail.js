@@ -5,7 +5,7 @@ export const cart_addCart = (data) => {
 	};
 };
 
-export const cart_updateCart = (data) => {
+export const cart_updateOffer = (data) => {
 	return {
 		type: "UPDATE_OFFER",
 		value: data,
@@ -25,9 +25,9 @@ export const addToCart = (data) => {
 	};
 };
 
-export const updateCart = (data) => {
+export const updateOffer = (data) => {
 	return async (dispatch) => {
-		dispatch(cart_updateCart(data));
+		dispatch(cart_updateOffer(data));
 	};
 };
 
