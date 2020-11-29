@@ -1,17 +1,14 @@
 const initialState = {
 		orderid: '',
 		hotelid: 0,
-		dishes:{
-			dishid:0,
-			quantity:0
-		},
+		dishes:[],
 		offerid:0,
 		offerval:0,
 		paymentMode:'',
 		price: 50,
 }
 
-function dishdata(state = initialState, action) {
+function cartdata(state = initialState, action) {
 	// const newState = { ...state }
 	switch (action.type) {
 
@@ -45,4 +42,4 @@ function dishdata(state = initialState, action) {
 	return state;
 }
 
-export default dishdata;
+export default cartdata;
