@@ -2,7 +2,7 @@ const dishes={
     dishdata:[
         {
           hotelid:'H1',
-          dishid:1,
+          dishid: 'H1-D1',
           dishname:'Aloo Burger',
           image:'',
           category:"Snacks",
@@ -11,7 +11,7 @@ const dishes={
           price:50,
         },{
             hotelid:'H1',
-            dishid:2,
+            dishid: 'H1-D2',
             dishname:'Chicken Burger',
             image:'',
             category:"Snacks",
@@ -21,7 +21,7 @@ const dishes={
           },
           {
             hotelid:'H2',
-            dishid:1,
+            dishid: 'H2-D1',
             dishname:'Biryani',
             image:'',
             category:"Main Course",
@@ -31,7 +31,7 @@ const dishes={
           },
           {
             hotelid:'H3',
-            dishid:1,
+            dishid: 'H3-D1',
             dishname:'Rasgulla',
             image:'',
             category:"Desert",
