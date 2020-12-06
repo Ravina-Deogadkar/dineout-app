@@ -15,6 +15,7 @@ import Button from '@material-ui/core/Button';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import ShopIcon from '@material-ui/icons/Shop';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { useSelector} from "react-redux";
 
 const Home = lazy(() => import('../template/home.js'));
 const Offer = lazy(() => import('../template/offer.js'));
@@ -98,7 +99,7 @@ export default function Header() {
 	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
 	const [address, setAddress] = React.useState({ addressType: "Home", addressValue: "Street no. XYZ" });
-
+	const carts = useSelector(state => state.cartdata)
 
 	const isMenuOpen = Boolean(anchorEl);
 	const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -276,7 +277,7 @@ export default function Header() {
 								<p className={classes.menuLabel}>User</p>
 							</IconButton>
 							<IconButton aria-label="show cart" color="inherit">
-								<Badge badgeContent={4} color="secondary">
+								<Badge badgeContent={carts?.dishes.length} color="secondary">
 									<ShopIcon />
 
 								</Badge>
