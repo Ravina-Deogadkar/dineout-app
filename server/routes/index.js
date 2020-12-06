@@ -5,10 +5,8 @@ const swaggerUi = require('swagger-ui-express');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  const userOne = new User("Alexander", "fake@gmail.com");
-  const userTwo = new User("Ryan", "fakeagain@gmail.com");
-  res.json({ userOne, userTwo });
-  //res.render('index', { title: 'Express' });
+ 
+  res.send('respond with a resource');
 });
 
 module.exports = router;  
