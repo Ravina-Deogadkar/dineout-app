@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import DineCard from './hotelcard';
+import HotelCard from './hotelcard';
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getHotelData } from "../../store/action/hotelDetail";
@@ -34,7 +34,7 @@ const useStyles = (theme) => ({
 	}
 });
 
-class nearby extends Component {
+class Nearby extends Component {
 
 	constructor(props) {
 		super(props);
@@ -60,7 +60,7 @@ class nearby extends Component {
 					<Grid container style={{ margin: "5%", maxWidth: '90%' }} spacing={5}>
 						{hoteldata.map((value, index) => (
 							<Grid item xs={3} sm={3} lg={4} key={index}>
-								<DineCard hoteldata={value}></DineCard>
+								<HotelCard hoteldata={value}></HotelCard>
 							</Grid>
 						))}
 					</Grid>
@@ -69,7 +69,7 @@ class nearby extends Component {
 		)
 	}
 }
-nearby.propTypes = {
+Nearby.propTypes = {
 	hoteldata: PropTypes.array,
 	getHotelData_action: PropTypes.func
 }
@@ -88,5 +88,5 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(withStyles(useStyles)(nearby));
+)(withStyles(useStyles)(Nearby));
 

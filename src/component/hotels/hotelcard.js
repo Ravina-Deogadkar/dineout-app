@@ -10,6 +10,9 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import PropTypes from "prop-types";
+import Button from '@material-ui/core/Button';
+import { getCadData } from "../../store/action/dishDetail";
+import { connect } from "react-redux";
 
 const useStyles = (theme) => ({
 	root: {
@@ -39,7 +42,7 @@ const useStyles = (theme) => ({
 	}
 });
 
-class hotelcard extends Component {
+class HotelCard extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -63,6 +66,9 @@ class hotelcard extends Component {
 		// obj["expanded"] = !this.state.expanded;
 		// this.setState(obj);
 	};
+	clickHandler = () => {
+
+	}
 
 	render() {
 		const classes = this.props.classes; const caddata = this.props.hoteldata;
@@ -85,7 +91,9 @@ class hotelcard extends Component {
 						{caddata?.avgprice}
 					</Typography>
 					<Typography variant="body2" color="textSecondary" component="p">
-						{caddata?.category.join(' | ')}
+						<Button variant="contained" color="primary" onClick={this.clickHandler}>
+							View menu
+      				</Button>
 					</Typography>
 				</CardContent>
 				<CardActions disableSpacing>
@@ -99,8 +107,21 @@ class hotelcard extends Component {
 	}
 }
 
-hotelcard.propTypes = {
+HotelCard.propTypes = {
 	hoteldata: PropTypes.object
 }
+const mapStateToProps = (state) => {
+	return {
+		dishdata: state.dishdata,
+	};
+}
 
-export default withStyles(useStyles)(hotelcard)
+const mapDispatchToProps = (dispatch) => {
+	return {
+		getCadData_action: () => dispatch(getCadData()),
+	};
+};
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(withStyles(useStyles)(HotelCard));
