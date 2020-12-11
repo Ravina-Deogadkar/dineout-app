@@ -24,7 +24,7 @@ class Offer extends Component {
             Offers
           </Typography>
             <div>
-            <DineCard></DineCard>
+            {/* <DineCard></DineCard> */}
             </div>
             </div>
         )
