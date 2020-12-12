@@ -7,7 +7,7 @@ export const fetchDishData = async () => {
     let data = await Axios.get(url);
     const adsDetails = [];
     console.log(data.data.dishdata);
-    if (data.data.dishdata != undefined) {
+    if (data.data.dishdata !== undefined) {
         data.data.dishdata.map((value, index) => {
             if (index < 6) {
                 adsDetails[index] = value;
@@ -24,7 +24,7 @@ export const fetchHotelData = async () => {
     let data = await Axios.get(url);
     const adsDetails = [];
     console.log(data.data.dishdata);
-    if (data.data.hoteldata != undefined) {
+    if (data.data.hoteldata !== undefined) {
         data.data.hoteldata.map((value, index) => {
             if (index < 6) {
                 adsDetails[index] = value;

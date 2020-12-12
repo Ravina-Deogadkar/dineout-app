@@ -48,7 +48,7 @@ class Nearby extends Component {
 		this.props.getHotelData_action();
 	}
 	render() {
-		const { classes, hoteldata } = this.props;
+		const { classes, hotel } = this.props;
 
 		return (
 			<div>
@@ -58,9 +58,9 @@ class Nearby extends Component {
 				<div className={classes.root}>
 
 					<Grid container style={{ margin: "5%", maxWidth: '90%' }} spacing={5}>
-						{hoteldata.map((value, index) => (
+						{hotel.map((value, index) => (
 							<Grid item xs={3} sm={3} lg={4} key={index}>
-								<HotelCard hoteldata={value}></HotelCard>
+								<HotelCard hotel={value}></HotelCard>
 							</Grid>
 						))}
 					</Grid>
@@ -70,13 +70,13 @@ class Nearby extends Component {
 	}
 }
 Nearby.propTypes = {
-	hoteldata: PropTypes.array,
+	hotel: PropTypes.array,
 	getHotelData_action: PropTypes.func
 }
 
 const mapStateToProps = (state) => {
 	return {
-		hoteldata: state.hoteldata,
+		hotel: state.hotel.hotels,
 	};
 }
 

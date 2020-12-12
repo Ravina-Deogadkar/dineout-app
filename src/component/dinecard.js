@@ -7,7 +7,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import { connect } from "react-redux";
@@ -89,7 +88,7 @@ class dinecard extends Component {
     let newdish=[];
     this.props.cartDetail.dishes.map(dish=>{
       console.log(dish)
-      if (dish.dishid == dishid) {
+      if (dish.dishid === dishid) {
         dish.quantity +=1;
         newdish.push(dish);
       }

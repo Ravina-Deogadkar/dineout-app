@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { getCadData } from "../store/action/dishDetail";
-import { makeStyles,withStyles } from '@material-ui/core/styles';
 import Search from '../component/search';
 import DineCard from '../component/dinecard';
 import Grid from "@material-ui/core/Grid";;
-
-
 
 class Searchtemp extends Component {
     constructor(props){
@@ -17,7 +14,6 @@ class Searchtemp extends Component {
         }
     }
     searchHandler=(search)=>{
-        console.log('search',search);
         let statdata=this.state.dishdata;
         let nstatdata=statdata.filter(item => item.dishname.toLowerCase().includes(search.toLowerCase()));
         this.setState({ 'dishdata': nstatdata});
@@ -27,8 +23,6 @@ class Searchtemp extends Component {
         
     }
     render() {
-        const { classes, dishdata } = this.props;
-        
         return (
             <main>
                 <Search onSearch={this.searchHandler}></Search>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles,withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 const useStyles=(theme) => ({
     detail: {
@@ -14,9 +14,7 @@ const useStyles=(theme) => ({
       },
 });
 class userDetail extends Component {
-    constructor(props){
-        super(props);
-    }
+    
     render() {
         const {userinfo,classes}=this.props;
         return (
