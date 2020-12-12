@@ -12,6 +12,7 @@ import { red } from '@material-ui/core/colors';
 import PropTypes from "prop-types";
 import Button from '@material-ui/core/Button';
 import { getCadData } from "../../store/action/dishDetail";
+import { setHotelData } from "../../store/action/hotelDetail";
 import { connect } from "react-redux";
 
 const useStyles = (theme) => ({
@@ -46,18 +47,6 @@ class HotelCard extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			dishdata:
-			{
-				hotelid: '',
-				dishid: 1,
-				dishname: 'Aloo Burger',
-				image: '',
-				category: "Snacks",
-				type: "Veg",
-				rating: 3,
-				price: 50,
-			}
-
 		}
 	}
 
@@ -67,28 +56,30 @@ class HotelCard extends Component {
 		// this.setState(obj);
 	};
 	clickHandler = () => {
-
+		let hotel = this.props.hotel;
+		hotel.menu = this.props.dishdata.filter(dish => dish.hotelid === this.props.hotel.hotelid);
+		this.props.setHotelData_action({'selectedHotel':hotel})
+		console.log("dishesjjjj", hotel);
+		window.location.replace("http://localhost:3000/menucard")
 	}
 
 	render() {
-		const classes = this.props.classes; const caddata = this.props.hoteldata;
-		console.log('ttdddata');
-		console.log(caddata);
-		return (
+		const { classes, hotel} = this.props; 
 
+		return (
 			<Card className={classes.root}>
 				<CardHeader
-					title={caddata?.hotelname}
-					subheader={caddata?.type}
+					title={hotel?.hotelname}
+					subheader={hotel?.type}
 				/>
 				<CardMedia
 					className={classes.media}
-					image={caddata?.image}
+					image={hotel?.image}
 					title="Paella dish"
 				/>
 				<CardContent>
 					<Typography variant="body2" color="textSecondary" component="p">
-						{caddata?.avgprice}
+						{hotel?.avgprice}
 					</Typography>
 					<Typography variant="body2" color="textSecondary" component="p">
 						<Button variant="contained" color="primary" onClick={this.clickHandler}>
@@ -108,7 +99,7 @@ class HotelCard extends Component {
 }
 
 HotelCard.propTypes = {
-	hoteldata: PropTypes.object
+	hotel: PropTypes.object
 }
 const mapStateToProps = (state) => {
 	return {
@@ -119,6 +110,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		getCadData_action: () => dispatch(getCadData()),
+		setHotelData_action: (data) => dispatch(setHotelData(data))
 	};
 };
 export default connect(

@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense, lazy } from 'react';
+import React, { Suspense,lazy } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -21,6 +21,8 @@ const Home = lazy(() => import('../template/home.js'));
 const Offer = lazy(() => import('../template/offer.js'));
 const Search = lazy(() => import('../template/searchtemp.js'));
 const Profile = lazy(() => import('../template/profile.js'));
+const MenuCard = lazy(() => import('../component/hotels/menucard'));
+
 const axios = require('axios');
 
 const useStyles = makeStyles(theme => ({
@@ -103,7 +105,7 @@ export default function Header() {
 
 	const isMenuOpen = Boolean(anchorEl);
 	const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-	const addressData = null;
+	let addressData = null;
 
 	const handleProfileMenuOpen = event => {
 		setAnchorEl(event.currentTarget);
@@ -113,9 +115,9 @@ export default function Header() {
 		setMobileMoreAnchorEl(null);
 	};
 
-	const handleChange = (event) => {
-		setAddress({ 'Home': event.target.value });
-	}
+	// const handleChange = (event) => {
+	// 	setAddress({ 'Home': event.target.value });
+	// }
 
 	const handleMenuClose = () => {
 		setAnchorEl(null);
@@ -307,6 +309,7 @@ export default function Header() {
 								<Route path="/offer" component={Offer} />
 								<Route path="/search" component={Search} />
 								<Route path="/profile" component={Profile} />
+								<Route path="/menucard" component={MenuCard} />
 							</Switch>
 						</Suspense>
 					</React.Fragment>
