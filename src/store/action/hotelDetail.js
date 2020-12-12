@@ -6,6 +6,13 @@ export const getHotel = (data) => {
       value: data,
     };
   };
+
+export const setHotel = (data) => {
+  return {
+    type: "SET_HOTEL",
+    value: data,
+  };
+};
 // action creator
 
 export const getHotelData = () => {
@@ -14,3 +21,10 @@ export const getHotelData = () => {
       dispatch(getHotel(data));
     };
   };
+
+
+export const setHotelData = (hoteldata) => {
+  return async (dispatch) => {
+    dispatch(setHotel(hoteldata));
+  };
+};
