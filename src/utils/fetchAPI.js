@@ -35,11 +35,31 @@ export const fetchHotelData = async () => {
     return adsDetails;
 };
 
+export const fetchOfferData = async () => {
+    const url = serverURL + "/offer";
+
+    let data = await Axios.get(url);
+    const adsDetails = [];
+    console.log(data.data.offerData);
+    if (data.data.offerData !== undefined) {
+        data.data.offerData.map((value, index) => {
+            if (index < 6) {
+                adsDetails[index] = value;
+                //adsDetails[index].image = serverURL + value.image;
+            }
+        });
+    }
+    return adsDetails;
+};
+
 export const apiDetails={
     hotels:{
         get: fetchHotelData(),
     },
     dishes:{
         get: fetchDishData()
+    },
+    offers:{
+        get: fetchOfferData()
     }
 }
