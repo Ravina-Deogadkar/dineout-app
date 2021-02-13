@@ -69,6 +69,7 @@ const useStyles = makeStyles(theme => ({
 		textDecoration: "none",
 		cursor: "default",
 		color: "white",
+		fontSize: "16px",
 	},
 	inputRoot: {
 		color: 'inherit',
@@ -251,9 +252,9 @@ export default function Header() {
 
 								</Badge>
 									<Link to="/search" className={classes.link}>
-										<p className={classes.menuLabel}>
+										{/* <p className={classes.menuLabel}> */}
 											Search
-										</p>
+										{/* </p> */}
 									</Link>
 							</IconButton>
 							<IconButton aria-label="show 4 new offers" color="inherit">
@@ -263,8 +264,9 @@ export default function Header() {
 								</Badge>
 								
 								<Link to="/offer" className={classes.link}>
-									<p className={classes.menuLabel}>Offers
-									</p>
+									{/* <p className={classes.menuLabel}> */}
+										Offers
+									{/* </p> */}
 								</Link>
 							</IconButton>
 							<IconButton
@@ -274,16 +276,21 @@ export default function Header() {
 								aria-haspopup="true"
 								onClick={handleProfileMenuOpen}
 								color="inherit"
+								className={classes.link}
 							>
 								<AccountCircle />
-								<p className={classes.menuLabel}>User</p>
+								{/* <p className={classes.menuLabel}> */}
+									User
+									{/* </p> */}
 							</IconButton>
-							<IconButton aria-label="show cart" color="inherit">
+							<IconButton aria-label="show cart" color="inherit" className={classes.link}>
 								<Badge badgeContent={carts?.dishes.length} color="secondary">
 									<ShopIcon />
 
 								</Badge>
-								<p className={classes.menuLabel}>Cart</p>
+								{/* <p className={classes.menuLabel}> */}
+									Cart
+									{/* </p> */}
 							</IconButton>
 						</div>
 						<div className={classes.sectionMobile}>
