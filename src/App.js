@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import Layout from './component/layout';
+import ErrorFallback from './component/errorFallback'
 function App() {
   return (
     <div className="App">
-    <Layout></Layout>
+      <ErrorFallback></ErrorFallback>
   </div>
   );
 }
