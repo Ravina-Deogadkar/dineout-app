@@ -3,14 +3,9 @@ var router = express.Router();
 var data = require('../data/hotel')
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+const hotelController=require('../controller/hotelController');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  if(data!=undefined)
-    res.status(200).send(data);
-  else
-    res.status(400).send("No data found");
-  //res.render('index', { title: 'Express' });
-});
+router.get('/', hotelController.getHotels);
 
 module.exports = router;  
