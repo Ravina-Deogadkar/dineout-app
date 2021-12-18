@@ -14,6 +14,8 @@ import Button from '@material-ui/core/Button';
 import { getCadData } from "../../store/action/dishDetail";
 import { setHotelData } from "../../store/action/hotelDetail";
 import { connect } from "react-redux";
+import Modal from '@material-ui/core/Modal';
+import MenuCard from "./menucard";
 
 const useStyles = (theme) => ({
 	root: {
@@ -47,6 +49,7 @@ class HotelCard extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			openMenuDialog:false
 		}
 	}
 
@@ -56,11 +59,20 @@ class HotelCard extends Component {
 		// this.setState(obj);
 	};
 	clickHandler = () => {
+		
+		//window.location.replace("http://localhost:3000/menucard")
+	}
+
+	handleOpen=()=>{
 		let hotel = this.props.hotel;
 		hotel.menu = this.props.dishdata.filter(dish => dish.hotelid === this.props.hotel.hotelid);
-		this.props.setHotelData_action({'selectedHotel':hotel})
-		console.log("dishesjjjj", hotel);
-		window.location.replace("http://localhost:3000/menucard")
+		this.props.setHotelData_action({ 'selectedHotel': hotel })
+		this.setState({openMenuDialog:true});
+	}
+
+	handleClose=()=>{
+		this.setState({ openMenuDialog: false });
+
 	}
 
 	render() {
@@ -82,10 +94,20 @@ class HotelCard extends Component {
 						{hotel?.avgprice}
 					</Typography>
 					<Typography variant="body2" color="textSecondary" component="p">
-						<Button variant="contained" color="primary" onClick={this.clickHandler}>
+						<Button variant="contained" color="primary" onClick={this.handleOpen}>
 							View menu
-      				</Button>
+      				</Button>		
 					</Typography>
+					<Modal
+						open={this.state.openMenuDialog}
+							onClose={this.handleClose}
+							aria-labelledby="simple-modal-title"
+							aria-describedby="simple-modal-description"
+						>
+						<MenuCard/>
+
+					</Modal>
+					
 				</CardContent>
 				<CardActions disableSpacing>
 					<IconButton aria-label="add to favorites">
