@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import userDetail from '../component/user-profile/dashboard/user-detail'
+import HOC from '../component/HOC';
+import Profile from '../component/Profile';
 
+
+const profileData={
+    
+}
 export default class profile extends Component {
     render() {
         return (
@@ -10,3 +16,5 @@ export default class profile extends Component {
         )
     }
 }
+
+const ProfileTemplate=HOC(Profile, )
